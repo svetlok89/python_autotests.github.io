@@ -1,2 +1,2 @@
-# python_autotests.github.io
+# PythonProjects.github.io
 Пример автотестов на pytest + requests
