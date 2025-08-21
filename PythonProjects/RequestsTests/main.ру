@@ -1,0 +1,31 @@
+import requests
+
+URL = 'https://api.pokemonbattle.ru/v2'
+TOKEN = '8b9ae6fc65b7d12ddaf1f008e8dc9683'
+HEADER = {'Content-Type': 'application/json', 'trainer_token': TOKEN}
+body_registr_pokemon = {
+    "name": "Python",
+    "photo_id": 98
+}
+body_modify = {
+    "pokemon_id": "378289",
+    "name": "Leo",
+    "photo_id": 102
+}
+
+body_in_pokeball = {
+    "pokemon_id": "378289"
+}
+
+
+'''response = requests.post(url= f'{URL}/pokemons', headers = HEADER, json = body_registr_pokemon) 
+
+print(response.text)'''
+
+'''response_Modify = requests.put(url = f'{URL}/pokemons',headers = HEADER, json = body_modify)
+
+print(response_Modify.text)'''
+
+response_in_poceboll = requests.post(url = f'{URL}/trainers/add_pokeball', headers = HEADER, json = body_in_pokeball)
+
+print(response_in_pokeball.text)

@@ -1,0 +1,20 @@
+import requests
+import pytest
+
+URL = 'https://api.pokemonbattle.ru/v2'
+TOKEN = '8b9ae6fc65b7d12ddaf1f008e8dc9683a'
+HEADER = {'Content-Type': 'application/json', 'trainer_token': TOKEN}
+TRAINER_ID = '38650'
+
+def test_status_code():
+    response = requests.get(url = f'{URL}/trainers/{38650}', headers = HEADER)
+    assert response.status_code == 200
+
+def test_part_of_response():
+    response_get  = requests.get(url = f'{URL}/trainers/{38650}', headers = HEADER)
+    assert response_get.json()['trainer_name'] == 'Svetlok89'
+
+@pytest.mark.parametrize('key, value', [('trainer_name','Svetlok89' ), ('id', TRAINER_ID), ('city', 'Saint-Petersburg')])
+def test_parametrize(key, value) :
+    response_parametrize = requests.get(url = f'{URL}/trainers/{38650}', headers = HEADER)
+    assert response_parametrize.json() [key] == value
